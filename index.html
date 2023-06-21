@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Style/style.css" />
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+ <link rel="shortcut icon" href="./images/icons/Logo.png" type="image/x-icon">
+    <title>PA Bertocchi-Colliva</title>
+  </head>
+  <body>
+    <!----------------------------------------------------------------------------------------- Navbar -->
+    <header>
+      <nav id="navbar">
+        <div class="menu">
+          <ul>
+            <li><a href="#territorio">Il Territorio</a></li>
+            <li><a href="./digArch.html">Archivio Digitale</a></li>
+            <li><a href="#information">Contatti</a></li>
+            <li><a href="#">Chi siamo</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- SIDEBAR -->
+      <input type="checkbox" id="check">
+    <label for="check">
+      <i class="fas fa-bars" id="btn"></i>
+      <i class="fas fa-times" id="cancel"></i>
+    </label>
+    <div class="sidebar">
+    <header>Menu</header>
+    <ul>
+     <li><a href="#territorio"><i class="fas fa-map"></i>Territorio</a></li>
+     <li><a href="./digArch.html"><i class="fas fa-stream"></i>Archivio Digitale</a></li>
+     <li><a href="#information"><i class="far fa-envelope"></i>Contatti</a></li>
+     <li><a href="#"><i class="far fa-question-circle"></i>Chi siamo</a></li>
+    </ul>
+   </div>
+    </header>
+    <!------------------------------------------------------------------------------------------------ Primo container -->
+    <div class="container first">
+      <div id="#front" class="front">
+        <h1 class="titolo1">Pinacoteca Archivio</h1>
+        <h1 class="container-artist">Bertocchi-Colliva</h1>
+     <p class="descr"> 
+        Un piccolo spazio museale, situato nella citta di Monzuno, dedicato a
+        due grandi pittori del Novecento
+      </p>    
+      </div>
+    </div>
+    <!----------------------------------------------------------------------------------------- Primo blank con descrizione artisti -->
+    <div class="blank bFirst">
+      <div class="left-images">
+        <img class="images" src="./images/imgBackgrounds/Colliva.PNG" />
+      </div>
+      <div class="desc-artisti">
+        <p class="artist-desc">
+          "In pittura Bertocchi è umile e silenzioso: raffigura semplicemente un
+          mondo che gli pare sublime."
+          <br />
+          <br />
+          "Lea Colliva scalpita, tra figure, fiori e paesaggi, tra Rembrandt,
+          Soutine e un’irrequieta ricerca espressionista."
+        </p>
+        <hr />
+        <p class="cit">Beatrice Buscaroli Fabbri</p>
+      </div>
+    </div>
+    <!------------------------------------------------------------------------------------------------Container con lo slideshow  -->
+    <div class="container second">
+      <div class="s-container">
+        <div id="slideshow">
+          <div
+            class="item"
+            style="background-image: url(./images/imgSlides/Bertocchiquadro17.jpg)"
+          >
+            <div class="content">
+              <div class="name">Lea Colliva</div>
+              <div class="des">Ritratto di Renata con volpe bianca</div>
+            </div>
+          </div>
+          <div
+            class="item"
+            style="
+              background-image: url(./images/imgSlides/Dal_prato_all\'ospitale_1950.jpg);
+            "
+          >
+            <div class="content">
+              <div class="name">Nino Bertocchi</div>
+              <div class="des">Dal prato all'ospitale <br />(1950)</div>
+            </div>
+          </div>
+          <div
+            class="item"
+            style="
+              background-image: url(./images/imgSlides/Studio_di_piccoli_bimbi_1943_Colliva.JPG);
+            "
+          >
+            <div class="content">
+              <div class="name">Lea Colliva</div>
+              <div class="des">
+                Studio di piccoli bimbi <br />
+                (1943)
+              </div>
+            </div>
+          </div>
+          <div
+            class="item"
+            style="
+              background-image: url(./images/imgSlides/Valle_al_mattino__1942.jpg);
+            "
+          >
+            <div class="content">
+              <div class="name">Nino Bertocchi</div>
+              <div class="des">Valle al mattino <br />(1942)</div>
+            </div>
+          </div>
+          <div
+            class="item"
+            style="background-image: url(./images/imgSlides/IMG_0139.jpg)"
+          >
+            <div class="content">
+              <div class="name">Lea Colliva</div>
+              <div class="des">Il portico dell'ospedale <br />(1963)</div>
+            </div>
+          </div>
+          <div
+            class="item"
+            style="
+              background-image: url(./images/imgSlides/La_casa_povera_1944_bertocchi.jpg);
+            "
+          >
+            <div class="content">
+              <div class="name">Nino Bertocchi</div>
+              <div class="des">La casa povera <br />(1944)</div>
+            </div>
+          </div>
+        </div>
+        <div class="buttons">
+          <button id="prev"><i class="fa fa-arrow-left" aria-hidden="true"></i></i></button>
+          <button id="next"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+        </div>
+      </div>
+    </div>
+    <!-----------------------------------------------------------------------------------------------------Blank youtube e 360  -->
+    <div class="blank bSecond">
+      <div class="left-side">
+        <div class="video-yt">
+          <iframe src="https://www.youtube.com/embed/8JK7ojrRYKg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="svg-wrapper yt">
+          <svg xmlns="http://www.w3.org/2000/svg" width="190" height="60">
+            <rect width="190" height="60" class="shape"></rect>
+          </svg>
+          <div class="text">Canale Youtube</div>
+        </div>
+      </div>
+      <div class="right">
+            <video class="video_tour" autoplay loop>
+              <source src="./images/video/tourdemo.mp4" type="video/mp4">
+            </video>
+          <div class="svg-wrapper tour">
+            <svg xmlns="http://www.w3.org/2000/svg" width="190" height="60">
+              <rect width="190" height="60" class="shape"></rect>
+            </svg>
+            <div class="text">Tour 360°</div>
+          </div>
+        </div>
+      </div>
+    <!--------------------------------------------------------------------------Territorio  -->
+    <div id="territorio" class="container third">
+      <div class="land-txt">
+        <h1>Esplora la città di <br> Monzuno</h1>
+        <p>Il territorio di Monzuno, per altitudine, scenario paesaggistico e rete sentieristica, si presta in modo particolare a lunghe e gradevoli passeggiate in cui si possono ammirare  gli scorci tipici dell'Appennino, in particolare nelle frazioni che sovrastano l'abitato di Rioveggio e nell'area di Monte Venere.</p>
+      </div>
+    </div>
+    <!--------------------------------------------------------------------------Footer  -->
+    <div class="blank slide5">
+      <div class="slider">
+        <div class="slide-track">
+          <div class="slide">
+            <img
+              src="./images/icons/1.png"
+              height="100"
+              width="250"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="./images/icons/2.png"
+              height="100"
+              width="250"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="./images/icons/3.png"
+              height="100"
+              width="250"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="./images/icons/4.png"
+              height="100"
+              width="250"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="./images/icons/5.png"
+              height="100"
+              width="250"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="./images/icons/6.png"
+              height="100"
+              width="250"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="./images/icons/7.png"
+              height="100"
+              width="250"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="./images/icons/8.png"
+              height="100"
+              width="250"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="./images/icons/9.png"
+              height="100"
+              width="250"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="./images/icons/10.png"
+              height="100"
+              width="250"
+              alt=""
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="./images/icons/11.png"
+              height="100"
+              width="250"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+      <section class="foot-container">
+        <div id="information" class="information">
+          <div class="location">
+            <h3>Dove Siamo</h3>
+            <p>
+              <b>Filiale EmilBanca di Monzuno</b>
+              <br />Piazza XXIV Maggio 3/a - 40036 Monzuno (BO)
+            </p>
+            <p>Tel. 051/6770538 (Emil Banca)</p>
+            <p>Visite guidate per gruppi e scuole su prenotazione.</p>
+            <p>Biglietto GRATUITO</p>
+          </div>
+          <div class="orari">
+            <h3>Apertura</h3>
+            <p>Orari dal Lunedì al Venerdì:</p>
+            <p>
+              Mattina 8:20-13:20 <br />
+              Pomeriggio: 14:45-15:45
+            </p>
+          </div>
+          <div class="follow">
+            <h3>Seguici su</h3>
+            <div class="links">
+              <img src="./images/icons/icons8-facebook.svg" alt="Facebook" />
+              <img src="./images/icons/icons8-instagram.svg" alt="Instagram" />
+            </div>
+          </div>
+        </div>
+        <div class="attribution">
+          <hr />
+          <div class="copyright">
+            <p>© Tryeco 2.0 s.r.l. Web Design, Gestione, Manutenzione</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="./Script/function.js"></script>
+</html>
