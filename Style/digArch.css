@@ -256,6 +256,10 @@ label {
   .information p {
     font-size: 0.7rem;
   }
+  .slider::before,
+  .slider::after {
+    display: none;
+  }
   .sidebar,
   header input,
   label {

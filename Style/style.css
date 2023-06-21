@@ -449,10 +449,10 @@ label {
 }
 @keyframes scroll {
   0% {
-    transform: translateX(1000px);
+    transform: translateX(200px);
   }
   100% {
-    transform: translateX(calc(-250px * 5 * 2));
+    transform: translateX(calc(-260px * 6.5 * 2));
   }
 }
 .slider {
@@ -604,6 +604,10 @@ label {
   }
   .text {
     font-size: 18px;
+  }
+  .slider::before,
+  .slider::after {
+    display: none;
   }
   .land-txt h1 {
     font-size: 2rem;
