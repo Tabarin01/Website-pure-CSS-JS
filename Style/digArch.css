@@ -118,7 +118,7 @@ label {
 }
 .blank {
   width: 100%;
-  min-height: 60vh;
+  max-height: 40vh;
   background: var(--NotSoDark);
 }
 .slide5 {
@@ -129,65 +129,12 @@ label {
   );
   position: relative;
 }
-@keyframes scroll {
-  0% {
-    transform: translateX(1000px);
-  }
-  100% {
-    transform: translateX(calc(-250px * 5 * 2));
-  }
-}
-.slider {
-  background-color: hsl(40, 4%, 85%);
-  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
-  height: 100px;
-  margin: auto;
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-}
-.slider::before,
-.slider::after {
-  background: linear-gradient(
-    to right,
-    rgb(47 47 47 / 60%) 0%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  content: "";
-  height: 100px;
-  position: absolute;
-  width: 200px;
-  z-index: 2;
-}
-.slider::after {
-  right: 0;
-  top: 0;
-  transform: rotateZ(180deg);
-}
-.slider::before {
-  left: 0;
-  top: 0;
-}
-.slider .slide-track {
-  animation: scroll 40s linear infinite alternate;
-  display: flex;
-  justify-content: space-between;
-  width: calc(260px * 14);
-}
-.slider .slide {
-  overflow: hidden;
-}
-.slide-track img {
-  cursor: pointer;
-}
-
 /* ------------------------------------------------------------Information */
 .information * {
   color: var(--LightBeige);
 }
 
 .foot-container {
-  margin-top: 15%;
   position: relative;
   bottom: 0;
   width: 100%;
@@ -255,10 +202,6 @@ label {
 
   .information p {
     font-size: 0.7rem;
-  }
-  .slider::before,
-  .slider::after {
-    display: none;
   }
   .sidebar,
   header input,
