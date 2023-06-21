@@ -1,32 +1,3 @@
-//Funzione per la slideshow dei quadri
-document.getElementById("next").onclick = function () {
-  requestAnimationFrame(() => {
-    let lists = document.querySelectorAll(".item");
-    document.getElementById("slideshow").appendChild(lists[0]);
-  });
-};
-
-document.getElementById("prev").onclick = function () {
-  requestAnimationFrame(() => {
-    let lists = document.querySelectorAll(".item");
-    document.getElementById("slideshow").prepend(lists[lists.length - 1]);
-  });
-};
-
-//Funzioni di collegamento per i button youtube e tour360
-$(document).ready(function () {
-  $(".video_tour").click(async function () {
-    window.open("https://my.matterport.com/show/?m=4pnbaxcsEtK", "_blank");
-  });
-
-  $(".tour").click(async function () {
-    window.open("https://my.matterport.com/show/?m=4pnbaxcsEtK", "_blank");
-  });
-  $(".yt").click(async function () {
-    window.open("https://youtu.be/8JK7ojrRYKg", "_blank");
-  });
-});
-
 //Link partners
 $(document).ready(function () {
   $(".p1").click(async function () {

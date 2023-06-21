@@ -131,10 +131,10 @@ label {
 }
 @keyframes scroll {
   0% {
-    transform: translateX(0);
+    transform: translateX(1000px);
   }
   100% {
-    transform: translateX(calc(-250px * 7));
+    transform: translateX(calc(-250px * 5 * 2));
   }
 }
 .slider {
@@ -169,13 +169,16 @@ label {
   top: 0;
 }
 .slider .slide-track {
-  animation: scroll 40s linear infinite;
+  animation: scroll 40s linear infinite alternate;
   display: flex;
   justify-content: space-between;
   width: calc(260px * 14);
 }
 .slider .slide {
   overflow: hidden;
+}
+.slide-track img {
+  cursor: pointer;
 }
 
 /* ------------------------------------------------------------Information */
