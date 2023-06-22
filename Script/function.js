@@ -1,17 +1,27 @@
 //Funzione per la slideshow dei quadri
-document.getElementById("next").onclick = function () {
-  requestAnimationFrame(() => {
-    let lists = document.querySelectorAll(".item");
-    document.getElementById("slideshow").appendChild(lists[0]);
-  });
+const slideshow = document.getElementById("slideshow");
+const prevButton = document.getElementById("prev");
+const nextButton = document.getElementById("next");
+const items = Array.from(document.querySelectorAll(".item"));
+
+let currentIndex = 0;
+
+nextButton.onclick = function () {
+  currentIndex = (currentIndex + 1) % items.length;
+  updateSlide();
 };
 
-document.getElementById("prev").onclick = function () {
-  requestAnimationFrame(() => {
-    let lists = document.querySelectorAll(".item");
-    document.getElementById("slideshow").prepend(lists[lists.length - 1]);
-  });
+prevButton.onclick = function () {
+  currentIndex = (currentIndex - 1 + items.length) % items.length;
+  updateSlide();
 };
+
+function updateSlide() {
+  requestAnimationFrame(() => {
+    slideshow.appendChild(items[currentIndex]);
+  });
+}
+
 
 //Funzioni di collegamento per i button youtube e tour360
 $(document).ready(function () {
