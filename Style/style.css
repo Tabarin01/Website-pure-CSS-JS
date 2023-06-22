@@ -186,14 +186,14 @@ label {
 #slideshow {
   width: max-content;
   margin-top: 50px;
-  overflow:hidden;
+  overflow: hidden;
 }
 .item {
   width: 200px;
   height: 300px;
   background-position: 50% 50%;
   display: inline-block;
-  transition: 0.5s;
+  transition: 0.5s ease-in-out;
   background-size: cover;
   position: absolute;
   z-index: 1;
@@ -631,7 +631,10 @@ label {
   }
   .s-container {
     width: 60%;
-    height: 50%;
+    height: 40%;
+  }
+  .item {
+    transition: 0.1s ease-in-out;
   }
   .item .content {
     left: 3%;

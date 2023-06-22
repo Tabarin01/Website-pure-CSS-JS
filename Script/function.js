@@ -6,6 +6,13 @@ const items = Array.from(document.querySelectorAll(".item"));
 
 let currentIndex = 0;
 
+// Pre-carica le immagini
+const preloadedImages = items.map(item => {
+  const image = new Image();
+  image.src = item.style.backgroundImage.match(/url\("(.+)"\)/)[1];
+  return image;
+});
+
 nextButton.onclick = function () {
   currentIndex = (currentIndex + 1) % items.length;
   updateSlide();
