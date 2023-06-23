@@ -1,42 +1,43 @@
-var slideshow = document.getElementById("slideshow");
-var nextButton = document.getElementById("next");
-var prevButton = document.getElementById("prev");
+document.addEventListener("DOMContentLoaded", function () {
+  var slideshow = document.getElementById("slideshow");
+  var nextButton = document.getElementById("next");
+  var prevButton = document.getElementById("prev");
 
-function checkAllImagesLoaded() {
-  const images = document.querySelectorAll(".item img");
-  for (let i = 0; i < images.length; i++) {
-    if (!images[i].complete) {
-      setTimeout(checkAllImagesLoaded, 10); // Riprova dopo 100 millisecondi
-      return;
+  function checkAllImagesLoaded() {
+    const images = document.querySelectorAll(".item img");
+    for (let i = 0; i < images.length; i++) {
+      if (!images[i].complete) {
+        setTimeout(checkAllImagesLoaded, 10);
+        return;
+      }
     }
+
+    // Tutte le immagini sono state caricate, abilita i pulsanti
+    nextButton.disabled = false;
+    prevButton.disabled = false;
   }
 
-  // Tutte le immagini sono state caricate, abilita i pulsanti
-  nextButton.disabled = false;
-  prevButton.disabled = false;
-}
+  nextButton.onclick = function () {
+    requestAnimationFrame(() => {
+      let lists = document.querySelectorAll(".item");
+      slideshow.appendChild(lists[0]);
+    });
+  };
 
-nextButton.onclick = function () {
-  requestAnimationFrame(() => {
-    let lists = document.querySelectorAll(".item");
-    slideshow.appendChild(lists[0]);
-  });
-};
+  prevButton.onclick = function () {
+    requestAnimationFrame(() => {
+      let lists = document.querySelectorAll(".item");
+      slideshow.prepend(lists[lists.length - 1]);
+    });
+  };
 
-prevButton.onclick = function () {
-  requestAnimationFrame(() => {
-    let lists = document.querySelectorAll(".item");
-    slideshow.prepend(lists[lists.length - 1]);
-  });
-};
+  // Disabilita i pulsanti finché le immagini non sono caricate
+  nextButton.disabled = true;
+  prevButton.disabled = true;
 
-// Disabilita i pulsanti finché le immagini non sono caricate
-nextButton.disabled = true;
-prevButton.disabled = true;
-
-// Verifica il caricamento delle immagini
-checkAllImagesLoaded();
-
+  // Verifica il caricamento delle immagini
+  checkAllImagesLoaded();
+});
 
 //Funzioni di collegamento per i button youtube e tour360
 $(document).ready(function () {
@@ -69,7 +70,6 @@ $(document).ready(function () {
   );
 });
 
-loadSlideImages();
 
 // Caricamento immagini background smartphone
 
