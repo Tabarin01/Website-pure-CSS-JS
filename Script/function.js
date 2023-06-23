@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    // Tutte le immagini sono state caricate, abilita i pulsanti
+    // Quando tutte le immagini sono state caricate, abilita i pulsanti
     nextButton.disabled = false;
     prevButton.disabled = false;
   }
