@@ -13,8 +13,6 @@ document.getElementById("prev").onclick = function () {
   });
 };
 
-//Caricamento immagini slideshow
-
 //Funzioni di collegamento per i button youtube e tour360
 $(document).ready(function () {
   $(".video_tour").click(function () {
@@ -29,7 +27,7 @@ $(document).ready(function () {
   });
 });
 
-//Caricamento immagini sfondo
+//Caricamento immagini slideshow
 $(document).ready(function () {
   $(".im1").css(
     "background-image",
@@ -50,6 +48,8 @@ $(document).ready(function () {
   );
 });
 
+// Caricamento immagini background smartphone
+
 function loadBackgroundImages() {
   const screenWidth = window.innerWidth;
 
@@ -59,7 +59,7 @@ function loadBackgroundImages() {
     document.querySelector(".second").style.backgroundImage =
       "url(../images/imgBackgrounds/imgBG2.png)";
     document.querySelector(".third").style.backgroundImage =
-      "url(../images/imgBackgrounds/1bom1920.jpg)";
+      "linear-gradient(to left, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), url(../images/imgBackgrounds/1bom1920.jpg)";
   }
 }
 
