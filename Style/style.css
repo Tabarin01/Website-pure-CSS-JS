@@ -565,7 +565,16 @@ label {
   .third {
     background-attachment: scroll;
   }
-  /* ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' */
+  .container{
+    background-image: url("../images/imgBackgrounds/La_siepe_verdeLG.png");
+  }
+  .second{
+    background-image: url("../images/imgBackgrounds/imgBG2.png");
+  }
+  .third{
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), url("../images/imgBackgrounds/1bom1920.jpg")
+  }
+ /* ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' */
   .front {
     align-items: center;
   }
@@ -637,10 +646,10 @@ label {
     width: 30%;
   }
   .item .name {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
   .item .desc {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
   }
   .bSecond {
     flex-direction: column;

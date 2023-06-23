@@ -1,25 +1,25 @@
 //Funzione per la slideshow dei quadri
-document.getElementById("next").onclick = function () {
+var slideshow = document.getElementById("slideshow");
+var nextButton = document.getElementById("next");
+var prevButton = document.getElementById("prev");
+
+nextButton.onclick = function () {
   requestAnimationFrame(() => {
     let lists = document.querySelectorAll(".item");
-    document.getElementById("slideshow").appendChild(lists[0]);
+    slideshow.appendChild(lists[0]);
   });
 };
 
-document.getElementById("prev").onclick = function () {
+prevButton.onclick = function () {
   requestAnimationFrame(() => {
     let lists = document.querySelectorAll(".item");
-    document.getElementById("slideshow").prepend(lists[lists.length - 1]);
+    slideshow.prepend(lists[lists.length - 1]);
   });
 };
 
 //Funzioni di collegamento per i button youtube e tour360
 $(document).ready(function () {
-  $(".video_tour").click(function () {
-    window.open("https://my.matterport.com/show/?m=4pnbaxcsEtK", "_blank");
-  });
-
-  $(".tour").click(function () {
+  $(".video_tour, .tour").click(function () {
     window.open("https://my.matterport.com/show/?m=4pnbaxcsEtK", "_blank");
   });
   $(".yt").click(function () {
@@ -47,32 +47,6 @@ $(document).ready(function () {
     "url(../images/imgSlides/La_casa_povera_1944_bertocchi.jpg)"
   );
 });
-function loadSlideImages() {
-  const screenWidth = window.innerWidth;
-
-  if (screenWidth <= 811) {
-    $(".im1").css(
-      "background-image",
-      "url(../images/imgSlidesM/BertocchiQuadro17.png)"
-    );
-    $(".im3").css(
-      "background-image",
-      "url(../images/imgSlidesM/StudioBimbi.png)"
-    );
-    $(".im4").css(
-      "background-image",
-      "url(../images/imgSlidesM/Vallemattino.png)"
-    );
-    $(".im5").css(
-      "background-image",
-      "url(./images/imgSlidesM/PorticoOsp.png)"
-    );
-    $(".im6").css(
-      "background-image",
-      "url(../images/imgSlidesM/Casapovera.png)"
-    );
-  }
-}
 
 loadSlideImages();
 
