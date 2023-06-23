@@ -621,6 +621,7 @@ label {
   }
   .item {
     transition: 0.1s ease-in-out;
+    transform: translate(0, -50%) scale(1);
   }
   .item .content {
     left: 3%;
