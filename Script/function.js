@@ -47,6 +47,34 @@ $(document).ready(function () {
     "url(../images/imgSlides/La_casa_povera_1944_bertocchi.jpg)"
   );
 });
+function loadSlideImages() {
+  const screenWidth = window.innerWidth;
+
+  if (screenWidth <= 811) {
+    $(".im1").css(
+      "background-image",
+      "url(../images/imgSlidesM/BertocchiQuadro17.png)"
+    );
+    $(".im3").css(
+      "background-image",
+      "url(../images/imgSlidesM/StudioBimbi.png)"
+    );
+    $(".im4").css(
+      "background-image",
+      "url(../images/imgSlidesM/Vallemattino.png)"
+    );
+    $(".im5").css(
+      "background-image",
+      "url(./images/imgSlidesM/PorticoOsp.png)"
+    );
+    $(".im6").css(
+      "background-image",
+      "url(../images/imgSlidesM/Casapovera.png)"
+    );
+  }
+}
+
+loadSlideImages();
 
 // Caricamento immagini background smartphone
 

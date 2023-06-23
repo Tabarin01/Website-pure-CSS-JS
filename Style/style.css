@@ -616,12 +616,21 @@ label {
     font-size: 0.7rem;
   }
   .s-container {
-    width: 60%;
-    height: 40%;
+    width: 50%;
+    height: 50%;
+  }
+  #slideshow {
+    width: cover;
   }
   .item {
-    transition: 0.1s ease-in-out;
+    width: 100px;
+    height: 200px;
+    transition: 0.01s ease-in-out;
     transform: translate(0, -50%) scale(1);
+    top: 75%;
+  }
+  .buttons{
+    top:90%;
   }
   .item .content {
     left: 3%;
