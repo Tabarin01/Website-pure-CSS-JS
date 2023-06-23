@@ -1,34 +1,19 @@
 //Funzione per la slideshow dei quadri
-const slideshow = document.getElementById("slideshow");
-const prevButton = document.getElementById("prev");
-const nextButton = document.getElementById("next");
-const items = Array.from(document.querySelectorAll(".item"));
-
-let currentIndex = 0;
-
-// Pre-carica le immagini
-const preloadedImages = items.map(item => {
-  const image = new Image();
-  image.src = item.style.backgroundImage.match(/url\("(.+)"\)/)[1];
-  return image;
-});
-
-nextButton.onclick = function () {
-  currentIndex = (currentIndex + 1) % items.length;
-  updateSlide();
-};
-
-prevButton.onclick = function () {
-  currentIndex = (currentIndex - 1 + items.length) % items.length;
-  updateSlide();
-};
-
-function updateSlide() {
+document.getElementById("next").onclick = function () {
   requestAnimationFrame(() => {
-    slideshow.appendChild(items[currentIndex]);
+    let lists = document.querySelectorAll(".item");
+    document.getElementById("slideshow").appendChild(lists[0]);
   });
-}
+};
 
+document.getElementById("prev").onclick = function () {
+  requestAnimationFrame(() => {
+    let lists = document.querySelectorAll(".item");
+    document.getElementById("slideshow").prepend(lists[lists.length - 1]);
+  });
+};
+
+//Caricamento immagini slideshow
 
 //Funzioni di collegamento per i button youtube e tour360
 $(document).ready(function () {
@@ -44,6 +29,42 @@ $(document).ready(function () {
   });
 });
 
+//Caricamento immagini sfondo
+$(document).ready(function () {
+  $(".im1").css(
+    "background-image",
+    "url(../images/imgSlides/Bertocchiquadro17.jpg)"
+  );
+  $(".im3").css(
+    "background-image",
+    "url(../images/imgSlides/Studio_di_piccoli_bimbi_1943_Colliva.JPG)"
+  );
+  $(".im4").css(
+    "background-image",
+    "url(../images/imgSlides/Valle_al_mattino__1942.jpg)"
+  );
+  $(".im5").css("background-image", "url(./images/imgSlides/IMG_0139.jpg)");
+  $(".im6").css(
+    "background-image",
+    "url(../images/imgSlides/La_casa_povera_1944_bertocchi.jpg)"
+  );
+});
+
+function loadBackgroundImages() {
+  const screenWidth = window.innerWidth;
+
+  if (screenWidth <= 811) {
+    document.querySelector(".container").style.backgroundImage =
+      "url(../images/imgBackgrounds/La_siepe_verdeLG.png)";
+    document.querySelector(".second").style.backgroundImage =
+      "url(../images/imgBackgrounds/imgBG2.png)";
+    document.querySelector(".third").style.backgroundImage =
+      "url(../images/imgBackgrounds/1bom1920.jpg)";
+  }
+}
+
+loadBackgroundImages();
+
 //Link partners
 $(document).ready(function () {
   $(".p1").on("click touchstart", function () {
@@ -53,25 +74,25 @@ $(document).ready(function () {
   $(".p2").on("click touchstart", function () {
     window.open("https://www.foiatonda.it/", "_blank");
   });
-  $(".p3").on("click touchstart",function () {
+  $(".p3").on("click touchstart", function () {
     window.open("https://www.emilbanca.it/", "_blank");
   });
-  $(".p4").on("click touchstart",function () {
+  $(".p4").on("click touchstart", function () {
     window.open("https://www.appenninoslow.it/", "_blank");
   });
-  $(".p5").on("click touchstart",function () {
+  $(".p5").on("click touchstart", function () {
     window.open("https://www.regione.emilia-romagna.it/", "_blank");
   });
-  $(".p6").on("click touchstart",function () {
+  $(".p6").on("click touchstart", function () {
     window.open("https://www.bolognamontana.it/", "_blank");
   });
-  $(".p7").on("click touchstart",function () {
+  $(".p7").on("click touchstart", function () {
     window.open("https://www.lineagotica.eu/", "_blank");
   });
-  $(".p8").on("click touchstart",function () {
+  $(".p8").on("click touchstart", function () {
     window.open("https://www.comune.monzuno.bo.it/home", "_blank");
   });
-  $(".p10").on("click touchstart",function () {
+  $(".p10").on("click touchstart", function () {
     window.open("https://www.savenasettasambro.com/", "_blank");
   });
 });

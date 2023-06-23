@@ -22,8 +22,6 @@ body {
   color: var(--color);
   width: 100%;
   min-height: 100vh;
-  background-image: linear-gradient(to right, rgb(0 0 0 / 80%), rgb(0 0 0 / 0%)),
-    url(../images/imgBackgrounds/A-D.png);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
