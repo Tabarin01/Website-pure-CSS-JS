@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
   var slideshow = document.getElementById("slideshow");
   var nextButton = document.getElementById("next");
   var prevButton = document.getElementById("prev");
