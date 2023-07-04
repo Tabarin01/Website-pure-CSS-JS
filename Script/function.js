@@ -12,6 +12,10 @@ document.getElementById("prev").onclick = function () {
   });
 };
 
+function openLink(url) {
+  window.open(url, "_blank");
+}
+
 //Funzioni di collegamento per i button youtube e tour360
 $(document).ready(function () {
   $(".video_tour, .tour").click(function () {
@@ -91,4 +95,3 @@ $(document).ready(function () {
     window.open("https://www.savenasettasambro.com/", "_blank");
   });
 });
-
