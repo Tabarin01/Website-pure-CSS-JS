@@ -101,7 +101,7 @@ label {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  margin-left: 2%;
+  margin-left: 15%;
   margin-right: 2%;
 }
 .titolo1 {
@@ -564,18 +564,24 @@ label {
   .third {
     background-attachment: scroll;
   }
-  .container{
+  .container {
     background-image: url("../images/imgBackgrounds/La_siepe_verdeLG.png");
   }
-  .second{
+  .second {
     background-image: url("../images/imgBackgrounds/imgBG2.png");
   }
-  .third{
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0)), url("../images/imgBackgrounds/1bom1920.jpg")
+  .third {
+    background-image: linear-gradient(
+        to left,
+        rgba(0, 0, 0, 0.8),
+        rgba(0, 0, 0, 0)
+      ),
+      url("../images/imgBackgrounds/1bom1920.jpg");
   }
- /* ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' */
+  /* ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' */
   .front {
     align-items: center;
+    margin-left: 0%;
   }
   .titolo1 {
     font-size: 1.5rem;
@@ -637,8 +643,8 @@ label {
     transform: translate(0, -50%) scale(1);
     top: 69%;
   }
-  .buttons{
-    top:85%;
+  .buttons {
+    top: 85%;
   }
   .item .content {
     left: 3%;

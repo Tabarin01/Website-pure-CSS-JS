@@ -17,7 +17,7 @@
 body {
   font-family: "Playfair Display", sans-serif;
 }
-.container {
+.dcontainer {
   text-align: center;
   color: var(--color);
   width: 100%;
@@ -179,7 +179,7 @@ label {
   .menu ul {
     display: none;
   }
-  .container {
+  .dcontainer {
     background-attachment: scroll;
   }
   .front {
