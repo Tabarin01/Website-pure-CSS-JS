@@ -1,4 +1,6 @@
-// Caricamento immagine di sfondo digArch
+/*********************************************************
+                   Caricamento immagini                  * 
+**********************************************************/
 window.addEventListener("load", function () {
   const container = document.querySelector(".dcontainer");
   container.style.backgroundImage =
@@ -10,6 +12,9 @@ window.addEventListener("load", function () {
     "linear-gradient(to right, rgb(0 0 0 / 80%), rgb(0 0 0 / 0%)), url('../images/imgBackgrounds/A-D.png')";
 });
 
+/*********************************************************
+                   Immagini da poter aprire              * 
+**********************************************************/
 const isSrcsetSupported = "srcset" in new Image();
 const swipingThreshold = 5;
 
@@ -441,7 +446,9 @@ function mapRange(value, fromIn, toIn, fromOut, toOut) {
   return fromOut + ((toOut - fromOut) * (value - fromIn)) / (toIn - fromIn);
 }
 
-//----------------------------------------------------------------
+/*********************************************************
+                   Scorrimento slide                     * 
+**********************************************************/
 
 var currentSlide = 0;
 var slides = document.getElementsByClassName("slider");
