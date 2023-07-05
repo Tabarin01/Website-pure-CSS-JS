@@ -116,6 +116,7 @@ label {
     0px 0.25rem 0.25rem #000;
 }
 .descr {
+  text-align: left;
   width: 60%;
   font-size: 1.5rem;
   margin-top: 3.125rem;

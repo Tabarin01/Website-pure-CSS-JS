@@ -4,6 +4,11 @@ window.addEventListener("load", function () {
   container.style.backgroundImage =
     "linear-gradient(to right, rgb(0 0 0 / 80%), rgb(0 0 0 / 0%)), url('../images/imgBackgrounds/A-D.png')";
 });
+window.addEventListener("load", function () {
+  const container = document.querySelector(".second");
+  container.style.backgroundImage =
+    "linear-gradient(to right, rgb(0 0 0 / 80%), rgb(0 0 0 / 0%)), url('../images/imgBackgrounds/A-D.png')";
+});
 
 const isSrcsetSupported = "srcset" in new Image();
 const swipingThreshold = 5;
@@ -12,6 +17,8 @@ let $lightbox;
 let images = [];
 let currentIndex = 0;
 let wasSwiping = false;
+
+let zoomLevel = 1;
 
 $(() => {
   initGallery();
@@ -23,21 +30,16 @@ function initGallery() {
   const $galleryThumbs = $galleryItems.find(".thumb");
 
   const loadThumbnail = (target) => {
-    // get the src and srcset from the dataset of the gallery thumb
     const src = target.dataset.src;
     const srcset = target.dataset.srcset;
 
-    // create a temporary image
     const tempImage = new Image();
 
-    // set the src or srcset of the temp img to preload the actual image file
     if (isSrcsetSupported && srcset) {
       tempImage.srcset = srcset;
     } else if (src) {
       tempImage.src = src;
     }
-
-    // when the temp image is loaded, set the src or srcset to the gallery thumb
     tempImage.onload = function () {
       if (tempImage.srcset) {
         target.srcset = srcset;
@@ -70,7 +72,6 @@ function initGallery() {
 
     $galleryThumbs.each((i, el) => intersectionObserver.observe(el));
   } else {
-    // Fallback for unsupported browsers
     $galleryThumbs.each((i, el) => loadThumbnail(el));
   }
 
@@ -130,14 +131,13 @@ function showInitialImage(index) {
 
 function createLightbox() {
   // ------------------------- //
-  // Create DOM Elements,
-  // Append Lightbox to Body
+  // Creazione elementi DOM,
+  // append del lightbox
   // ------------------------- //
 
   const $lightboxWrapper = $('<div class="lightbox-wrapper">');
   $lightbox = $('<div class="lightbox">');
 
-  // Header
   const $lightboxHeader = $('<div class="lightbox-header">');
   const $lightboxNumbers = $('<div class="lightbox-numbers"></div>');
   const $lightboxTitle = $('<div class="lightbox-title"></div>');
@@ -147,11 +147,9 @@ function createLightbox() {
   $lightboxHeader.append($lightboxNumbers, $lightboxTitle, $lightboxClose);
   $lightbox.append($lightboxHeader);
 
-  // Slides Wrapper
   const $slidesWrapper = $('<div class="lightbox-slides-wrapper"></div>');
   $lightbox.append($slidesWrapper);
 
-  // Slides
   const $prevSlide = $('<div class="lightbox-slide" data-state="prev"></div>');
   const $currentSlide = $(
     '<div class="lightbox-slide" data-state="current"></div>'
@@ -159,7 +157,6 @@ function createLightbox() {
   const $nextSlide = $('<div class="lightbox-slide" data-state="next"></div>');
   $slidesWrapper.append($prevSlide, $currentSlide, $nextSlide);
 
-  // Image
   const $lightboxImage = $(
     '<img class="lightbox-image" src="" alt="" draggable="false">'
   );
@@ -167,7 +164,6 @@ function createLightbox() {
   $prevSlide.append($lightboxImage.clone());
   $nextSlide.append($lightboxImage.clone());
 
-  // Loading Spinner
   const $spinner = $(
     '<div class="spinner spinner-border" role="status"><span class="sr-only">Loading... </span></div>'
   );
@@ -175,7 +171,6 @@ function createLightbox() {
   $prevSlide.append($spinner.clone());
   $nextSlide.append($spinner.clone());
 
-  // Arrows
   const $lightboxArrowLeft = $('<div class="lightbox-arrow arrow-left"></div>');
   const $lightboxArrowRight = $(
     '<div class="lightbox-arrow arrow-right"></div>'
@@ -183,22 +178,17 @@ function createLightbox() {
   $lightbox.append($lightboxArrowLeft);
   $lightbox.append($lightboxArrowRight);
 
-  // Footer
   const $lightboxFooter = $('<div class="lightbox-footer">');
   $lightbox.append($lightboxFooter);
 
-  // append lightbox to body
   $lightbox.appendTo($lightboxWrapper);
   $lightboxWrapper.appendTo($("body"));
 }
 
 function addLightboxEventListeners() {
-  // close lightbox when clicking on background
   $lightbox.find(".lightbox-slide").on("click", (e) => {
     if (e.currentTarget == e.target && !wasSwiping) closeLightbox();
   });
-
-  // close lightbox when clicking on close button
   $lightbox.find(".lightbox-close").on("click", (e) => {
     closeLightbox();
   });
@@ -207,21 +197,15 @@ function addLightboxEventListeners() {
 function closeLightbox() {
   const $lightboxWrapper = $(".lightbox-wrapper");
   const $lightboxImage = $lightbox.find(".lightbox-image");
-
-  // close lightbox
   $lightboxWrapper.removeClass("open").fadeOut("fast", () => {
     $lightboxImage.attr("src", "");
     $lightboxImage.attr("srcset", "");
   });
-
-  // remove lightbox event listeners
   $lightbox.find(".lightbox-slide").off();
   $lightbox.find(".lightbox-close").off();
   $lightbox.find(".lightbox-arrow").off();
   $(document).off("keydown.lightbox");
 }
-
-// try avoiding jQuery in mouse and touch event handlers to improve performance
 function initSlides() {
   const transitionDuration = 400;
   let distance = 0;
@@ -249,8 +233,6 @@ function initSlides() {
 
     if (distance < -swipingThreshold || distance > swipingThreshold)
       wasSwiping = true;
-
-    // move current slide and adjust opacity
     currentSlideEl.style.transform = `translateX(${distance}px)`;
     currentSlideEl.style.opacity = mapRange(
       Math.abs(distance),
@@ -260,10 +242,7 @@ function initSlides() {
       0
     );
 
-    // TODO: reset slide if (currentPos > slideWidth || currentPos < 0)   (not sure if necessary)
-
     if (distance < 0) {
-      // move next slide and adjust opacity
       nextSlideEl.style.transform = `translateX(${slideWidth + distance}px)`;
       nextSlideEl.style.opacity = mapRange(
         Math.abs(distance),
@@ -273,7 +252,6 @@ function initSlides() {
         1
       );
     } else {
-      // move previous slide and adjust opacity
       prevSlideEl.style.transform = `translateX(${distance - slideWidth}px)`;
       prevSlideEl.style.opacity = mapRange(
         Math.abs(distance),
@@ -459,7 +437,10 @@ function getLoopedIndex(index) {
   return index;
 }
 
-// Re-maps a number from one range to another.
 function mapRange(value, fromIn, toIn, fromOut, toOut) {
   return fromOut + ((toOut - fromOut) * (value - fromIn)) / (toIn - fromIn);
 }
+
+//----------------------------------------------------------------
+
+

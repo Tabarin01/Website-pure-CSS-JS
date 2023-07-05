@@ -136,8 +136,10 @@ section {
   padding: 1em;
 }
 section h1 {
-  color: white;
+  color: var(--Beige-Gray);
   text-shadow: rgba(0, 0, 0);
+  font-size: 2rem;
+  text-align: center;
 }
 .bFirst {
   background-image: linear-gradient(
@@ -149,17 +151,19 @@ section h1 {
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
-  height: 200vh;
+  height: 100vh;
 }
 
 .lead {
   font-weight: 600;
-  color: #777;
+  color: #000;
 }
 
 .gallery {
+  padding-top: 8%;
   display: flex;
   flex-wrap: wrap;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .gallery-item {
@@ -370,9 +374,393 @@ section h1 {
   display: none;
   max-width: 100%;
   max-height: 100%;
+  cursor: grab;
 }
 .lightbox .spinner {
   display: none;
+}
+/*******************************
+           Second              *
+*******************************/
+.second {
+  background-image: url(../);
+  background-attachment: fixed;
+  height: 130vh;
+}
+/* Slider */
+#slider {
+  width: 80%;
+  height: 80vh;
+  position: relative;
+  overflow: hidden;
+  margin-top: 13%;
+  margin-left: 10%;
+}
+@keyframes load {
+  from {
+    left: -100%;
+  }
+  to {
+    left: 0;
+  }
+}
+.slides {
+  width: 400%;
+  height: 100%;
+  position: relative;
+  -webkit-animation: slide 60s infinite;
+  -moz-animation: slide 60s infinite;
+  animation: slide 60s infinite;
+}
+.slider {
+  width: 25%;
+  height: 100%;
+  float: left;
+  position: relative;
+  z-index: 1;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.image img {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.zero3 {
+  transform: scale(5);
+}
+
+/* Legend */
+/* .legend {
+  border: 39rem solid transparent;
+  border-left: 60rem solid rgba(0, 0, 0, 0.593);
+  border-bottom: 0;
+  position: absolute;
+  bottom: 0;
+} */
+
+/* Contents */
+.content {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+}
+.content-txt {
+  width: 30%;
+  height: 100%;
+  float: left;
+  position: relative;
+  top: 50%;
+  -webkit-animation: content-s 15s infinite;
+  -moz-animation: content-s 15s infinite;
+  animation: content-s 15s infinite;
+  overflow: hidden;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.671),
+    rgba(0, 0, 0, 0.516)
+  );
+}
+.content-txt h2 {
+  font-family: Arial;
+  text-transform: uppercase;
+  font-size: 24px;
+  color: #fff;
+  text-align: left;
+  margin-left: 30px;
+  padding-bottom: 10px;
+  text-shadow: 0px 4px 4px #080808, 0 0 0 #000, 0px 4px 4px #000;
+}
+.content-txt p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-shadow: 0px 4px 4px #080808, 0 0 0 #000, 0px 4px 4px #000;
+  font-weight: normal;
+  font-size: 1rem;
+  font-style: italic;
+  color: #fff;
+  text-align: left;
+  margin-left: 30px;
+}
+
+/* Animation */
+@-webkit-keyframes slide {
+  0%,
+  100% {
+    margin-left: 0%;
+  }
+  21% {
+    margin-left: 0%;
+  }
+  25% {
+    margin-left: -100%;
+  }
+  46% {
+    margin-left: -100%;
+  }
+  50% {
+    margin-left: -200%;
+  }
+  71% {
+    margin-left: -200%;
+  }
+  75% {
+    margin-left: -300%;
+  }
+  96% {
+    margin-left: -300%;
+  }
+}
+@-moz-keyframes slide {
+  0%,
+  100% {
+    margin-left: 0%;
+  }
+  21% {
+    margin-left: 0%;
+  }
+  25% {
+    margin-left: -100%;
+  }
+  46% {
+    margin-left: -100%;
+  }
+  50% {
+    margin-left: -200%;
+  }
+  71% {
+    margin-left: -200%;
+  }
+  75% {
+    margin-left: -300%;
+  }
+  96% {
+    margin-left: -300%;
+  }
+}
+@keyframes slide {
+  0%,
+  100% {
+    margin-left: 0%;
+  }
+  21% {
+    margin-left: 0%;
+  }
+  25% {
+    margin-left: -100%;
+  }
+  46% {
+    margin-left: -100%;
+  }
+  50% {
+    margin-left: -200%;
+  }
+  71% {
+    margin-left: -200%;
+  }
+  75% {
+    margin-left: -300%;
+  }
+  96% {
+    margin-left: -300%;
+  }
+}
+
+@-webkit-keyframes content-s {
+  0% {
+    left: -420px;
+  }
+  10% {
+    left: 0px;
+  }
+  30% {
+    left: 0px;
+  }
+  40% {
+    left: 0px;
+  }
+  50% {
+    left: 0px;
+  }
+  60% {
+    left: 0px;
+  }
+  70% {
+    left: 0;
+  }
+  80% {
+    left: -420px;
+  }
+  90% {
+    left: -420px;
+  }
+  100% {
+    left: -420px;
+  }
+}
+@-moz-keyframes content-s {
+  0% {
+    left: -420px;
+  }
+  10% {
+    left: 0px;
+  }
+  30% {
+    left: 0px;
+  }
+  40% {
+    left: 0px;
+  }
+  50% {
+    left: 0px;
+  }
+  60% {
+    left: 0px;
+  }
+  70% {
+    left: 0;
+  }
+  80% {
+    left: -420px;
+  }
+  90% {
+    left: -420px;
+  }
+  100% {
+    left: -420px;
+  }
+}
+@keyframes content-s {
+  0% {
+    left: -420px;
+  }
+  10% {
+    left: 20px;
+  }
+  15% {
+    left: 0px;
+  }
+  30% {
+    left: 0px;
+  }
+  40% {
+    left: 0px;
+  }
+  50% {
+    left: 0px;
+  }
+  60% {
+    left: 0px;
+  }
+  70% {
+    left: 0;
+  }
+  80% {
+    left: -420px;
+  }
+  90% {
+    left: -420px;
+  }
+  100% {
+    left: -420px;
+  }
+}
+
+@-webkit-keyframes on {
+  0%,
+  100% {
+    margin-left: 0%;
+  }
+  21% {
+    margin-left: 0%;
+  }
+  25% {
+    margin-left: 15px;
+  }
+  46% {
+    margin-left: 15px;
+  }
+  50% {
+    margin-left: 30px;
+  }
+  71% {
+    margin-left: 30px;
+  }
+  75% {
+    margin-left: 45px;
+  }
+  96% {
+    margin-left: 45px;
+  }
+}
+
+@-moz-keyframes on {
+  0%,
+  100% {
+    margin-left: 0%;
+  }
+  21% {
+    margin-left: 0%;
+  }
+  25% {
+    margin-left: 15px;
+  }
+  46% {
+    margin-left: 15px;
+  }
+  50% {
+    margin-left: 30px;
+  }
+  71% {
+    margin-left: 30px;
+  }
+  75% {
+    margin-left: 45px;
+  }
+  96% {
+    margin-left: 45px;
+  }
+}
+
+@keyframes on {
+  0%,
+  100% {
+    margin-left: 0%;
+  }
+  21% {
+    margin-left: 0%;
+  }
+  25% {
+    margin-left: 15px;
+  }
+  46% {
+    margin-left: 15px;
+  }
+  50% {
+    margin-left: 30px;
+  }
+  71% {
+    margin-left: 30px;
+  }
+  75% {
+    margin-left: 45px;
+  }
+  96% {
+    margin-left: 45px;
+  }
 }
 
 /* ------------------------------------------------------------Information */
