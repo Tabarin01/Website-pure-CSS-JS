@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Playfair+Display:wght@500;700;800&display=swap");
 
 :root {
-  /* COLORS VARIABLES */
+  /*****************************
+           Variabili color     *
+********************************/
   --NotSoDark: hsl(40, 5%, 11%);
   --LightGray: hsl(42, 4.5%, 43.9%);
   --Beige-Gray: hsl(44.2, 20.9%, 82.2%);
@@ -27,7 +29,9 @@ body {
   background-position: center;
   background-attachment: fixed;
 }
-/* ----------------------------------------------------------------------------NAV */
+/*******************************
+           Nav                 *
+********************************/
 nav {
   background-color: #000000d9;
   position: fixed;
@@ -86,7 +90,9 @@ header input,
 label {
   display: none;
 }
-/* ----------------------------------------------------------------------------Front */
+/*******************************
+           Front               *
+********************************/
 .first {
   display: flex;
   flex-direction: column;
@@ -121,13 +127,17 @@ label {
   font-size: 1.5rem;
   margin-top: 3.125rem;
 }
-/* --------------------------------------------------Blank */
+/*******************************
+        Blank universale       *
+********************************/
 .blank {
   width: 100%;
   min-height: 60vh;
   background: var(--NotSoDark);
 }
-/* ---------------------------------------------------------------------------Descrizione artisti */
+/*******************************
+           Descrizione artisti *
+********************************/
 .bFirst {
   background-image: linear-gradient(
     to bottom,
@@ -168,13 +178,17 @@ label {
   font-size: 0.938rem;
 }
 
-/* ---------------------------------------------------------------------------Second slide */
+/*******************************
+          Secondo Slide        *
+********************************/
 .second {
   background-image: url(../images/imgBackgrounds/BertocchiCollivaV2.png);
   background-attachment: fixed;
   height: 1200px;
 }
-/* ---------------------------------------------------------------------------Slideshow */
+/*******************************
+           Slideshow           *
+********************************/
 .s-container {
   position: relative;
   left: 50%;
@@ -294,7 +308,9 @@ label {
 .buttons button:hover {
   background-color: #0000008a;
 }
-/* ------------------------------------------------------------------------- Blank 360 e YT */
+/*******************************
+          Blank YT e 360°      *
+********************************/
 .bSecond {
   background-image: linear-gradient(
     to bottom,
@@ -693,7 +709,7 @@ label {
 }
 
 /***********
-Smartphone 
+Smartphone *
 ************/
 
 @media (max-height: 430px) {

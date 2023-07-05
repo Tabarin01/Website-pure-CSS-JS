@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Playfair+Display:wght@500;700;800&display=swap");
 
 :root {
-  /* COLORS VARIABLES */
+ /*********************************************************
+                   Variabili Colori                       * 
+**********************************************************/
   --NotSoDark: hsl(40, 5%, 11%);
   --LightGray: hsl(42, 4.5%, 43.9%);
   --Beige-Gray: hsl(44.2, 20.9%, 82.2%);
@@ -546,6 +548,11 @@ button:hover {
   color: #fff;
   text-shadow: 0px 4px 4px #000000, 0 0 0 #000, 0px 4px 4px #000000;
 }
+
+
+/**************************************************
+      Media query                                 *
+***************************************************/
 
 @media (max-height: 365px) {
   .menu ul {
