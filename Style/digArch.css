@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Playfair+Display:wght@500;700;800&display=swap");
 
 :root {
- /*********************************************************
+  /*********************************************************
                    Variabili Colori                       * 
 **********************************************************/
   --NotSoDark: hsl(40, 5%, 11%);
@@ -494,15 +494,25 @@ section h1 {
   margin-top: 1%;
   text-align: center;
 }
-button {
+.buttons button {
   width: 3.125rem;
   height: 3.125rem;
   border-radius: 50%;
   border: 1px solid #5550;
   transition: 0.5s;
 }
-button:hover {
+.buttons button:hover {
   background-color: #0000008a;
+}
+.lightbox-zoom {
+  position:relative;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid #5550;
+  margin-right: -8%;
+  margin-left: -20%;
+  cursor: pointer;
 }
 /*******************************
            Information         *
@@ -548,7 +558,6 @@ button:hover {
   color: #fff;
   text-shadow: 0px 4px 4px #000000, 0 0 0 #000, 0px 4px 4px #000000;
 }
-
 
 /**************************************************
       Media query                                 *

@@ -149,7 +149,20 @@ function createLightbox() {
   const $lightboxClose = $(
     '<button type="button" class="lightbox-close" aria-label="Close"></button>'
   );
-  $lightboxHeader.append($lightboxNumbers, $lightboxTitle, $lightboxClose);
+  const $lightboxZoomIn = $(
+    '<button type="button" class="lightbox-zoom"> <i class="fas fa-plus"></i></button>'
+  );
+  const $lightboxZoomOut = $(
+    '<button type="button" class="lightbox-zoom"> <i class="fas fa-minus"></i></button>'
+  );
+
+  $lightboxHeader.append(
+    $lightboxNumbers,
+    $lightboxZoomIn,
+    $lightboxZoomOut,
+    $lightboxTitle,
+    $lightboxClose
+  );
   $lightbox.append($lightboxHeader);
 
   const $slidesWrapper = $('<div class="lightbox-slides-wrapper"></div>');
@@ -188,8 +201,23 @@ function createLightbox() {
 
   $lightbox.appendTo($lightboxWrapper);
   $lightboxWrapper.appendTo($("body"));
+  $lightboxZoomIn.click(function () {
+    zoomIn();
+  });
+
+  $lightboxZoomOut.click(function () {
+    zoomOut();
+  });
+}
+function zoomIn() {
+  zoomLevel += 0.1;
+  $(".lightbox-image").css("transform", `scale(${zoomLevel})`);
 }
 
+function zoomOut() {
+  zoomLevel -= 0.1;
+  $(".lightbox-image").css("transform", `scale(${zoomLevel})`);
+}
 function addLightboxEventListeners() {
   $lightbox.find(".lightbox-slide").on("click", (e) => {
     if (e.currentTarget == e.target && !wasSwiping) closeLightbox();
