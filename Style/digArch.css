@@ -377,11 +377,42 @@ section h1 {
   display: none;
   max-width: 100%;
   max-height: 100%;
-  cursor: grab;
 }
 .lightbox .spinner {
   display: none;
 }
+
+.img-magnifier-glass {
+  position: absolute;
+  border: 1px solid #000;
+  cursor: none;
+  /*Set the size of the magnifier glass:*/
+  width: 400px;
+  height: 300px;
+}
+.img-magnifier-container {
+  position: absolute;
+  cursor: none;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.img-magnifier-container img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: top left;
+  transform: scale(1);
+  transition: transform 0.3s ease;
+}
+
+.img-magnifier-container.active img {
+  transform: scale(3);
+}
+
 /*******************************
            Second              *
 *******************************/
@@ -505,7 +536,7 @@ section h1 {
   background-color: #0000008a;
 }
 .lightbox-zoom {
-  position:relative;
+  position: relative;
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
