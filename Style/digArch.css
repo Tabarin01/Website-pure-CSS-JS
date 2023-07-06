@@ -441,7 +441,7 @@ section h1 {
   margin-top: 1%;
   position: relative;
   display: inline-block;
-  background: linear-gradient(to bottom, #1b1c3f, #2b2342);
+  background: linear-gradient(to bottom, #4b4b58, #04000f);
   /* Gradient background */
   color: white;
   /* White text color */
@@ -467,7 +467,7 @@ section h1 {
 
 /* Hover animation */
 .beautiful-button:hover {
-  background: linear-gradient(to bottom, #2c2f63, #5b67b7);
+  background: linear-gradient(to bottom, #a27f13, #000000);
   animation: button-particles 1s ease-in-out infinite;
   transform: translateY(-2px);
 }
