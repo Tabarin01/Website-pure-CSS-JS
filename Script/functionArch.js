@@ -102,6 +102,7 @@ function openLightbox($currentGallery, targetIndex) {
       srcFallback: $currentImageEl.data("image-fallback"),
       srcset: $currentImageEl.data("image-srcset"),
       title: $currentImageEl.data("title"),
+      text: $currentImageEl.data("text"),
     };
 
     images.push(currentItem);
@@ -137,7 +138,6 @@ Creazione Box con immagini aperte     *
 function createLightbox() {
   const $lightboxWrapper = $('<div class="lightbox-wrapper">');
   $lightbox = $('<div class="lightbox">');
-
   const $lightboxHeader = $('<div class="lightbox-header">');
   const $lightboxNumbers = $('<div class="lightbox-numbers"></div>');
   const $lightboxTitle = $('<div class="lightbox-title"></div>');
@@ -191,12 +191,34 @@ function createLightbox() {
 
 function addLightboxEventListeners() {
   $lightbox.find(".lightbox-slide").on("click", (e) => {
-    if (e.currentTarget == e.target && !wasSwiping) closeLightbox();
+    if (e.currentTarget == e.target) closeLightbox();
   });
   $lightbox.find(".lightbox-close").on("click", (e) => {
     closeLightbox();
   });
+  $lightbox.find(".lightbox-image").on("click", (e) => {
+    openOverlay();
+  });
 }
+function openOverlay() {
+  const text = images[currentIndex].text; // Ottiene il titolo dell'immagine corrente
+
+  const $overlay = $('<div class="overlay"></div>');
+  const $overlayText = $(`<div class="overlay-text"><p>${text}</p></div>`); // Utilizza il titolo come testo nell'overlay
+  const $closeButton = $('<button class="overlay-close">Chiudi</button>');
+
+  $closeButton.on("click", () => {
+    closeOverlay();
+  });
+
+  $overlay.append($overlayText, $closeButton);
+  $overlay.appendTo($("body"));
+}
+
+function closeOverlay() {
+  $(".overlay").remove();
+}
+
 function closeLightbox() {
   const $lightboxWrapper = $(".lightbox-wrapper");
   const $lightboxImage = $lightbox.find(".lightbox-image");
