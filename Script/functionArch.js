@@ -201,11 +201,11 @@ function addLightboxEventListeners() {
   });
 }
 function openOverlay() {
-  const text = images[currentIndex].text; // Ottiene il titolo dell'immagine corrente
+  const text = images[currentIndex].text;
 
   const $overlay = $('<div class="overlay"></div>');
-  const $overlayText = $(`<div class="overlay-text"><p>${text}</p></div>`); // Utilizza il titolo come testo nell'overlay
-  const $closeButton = $('<button class="overlay-close">Chiudi</button>');
+  const $overlayText = $(`<div class="overlay-text"><p>${text}</p></div>`);
+  const $closeButton = $('<button class="beautiful-button">CHIUDI</button>');
 
   $closeButton.on("click", () => {
     closeOverlay();
