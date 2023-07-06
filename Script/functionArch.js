@@ -13,7 +13,7 @@ window.addEventListener("load", function () {
 });
 
 /*********************************************************
-                   Immagini da poter aprire              * 
+                   Creazione Galleria                    * 
 **********************************************************/
 const isSrcsetSupported = "srcset" in new Image();
 const swipingThreshold = 5;
@@ -133,12 +133,11 @@ function showInitialImage(index) {
   });
 }
 
-function createLightbox() {
-  // ------------------------- //
-  // Creazione elementi DOM,
-  // append del lightbox
-  // ------------------------- //
+/**************************************
+Creazione Box con immagini aperte     * 
+***************************************/
 
+function createLightbox() {
   const $lightboxWrapper = $('<div class="lightbox-wrapper">');
   $lightbox = $('<div class="lightbox">');
 
@@ -149,7 +148,7 @@ function createLightbox() {
     '<button type="button" class="lightbox-close" aria-label="Close"></button>'
   );
   const $magnifyButton = $(
-    '<button type="button" class="magnify-button"><i class="fa fa-search-plus"></i></button>'
+    '<button type="button" class="magnify-button">INGRANDISCI<i class="fa fa-search-plus"></i></button>'
   );
   $magnifyButton.on("click", (e) => {
     handleMagnifyClick();
@@ -206,7 +205,7 @@ function createLightbox() {
 
 function addLightboxEventListeners() {
   $lightbox.find(".lightbox-slide").on("click", (e) => {
-    if (e.currentTarget == e.target && !wasSwiping) closeLightbox();
+    if (e.currentTarget == e.target) closeLightbox();
     closeMagnifier();
   });
   $lightbox.find(".lightbox-close").on("click", (e) => {
@@ -281,8 +280,6 @@ function handleMagnifyClick() {
     // Display what the magnifier glass "sees"
     glass.style.backgroundPosition =
       "-" + (x * zoom - w + bw) + "px -" + (y * zoom - h + bw) + "px";
-    // Set the cursor to the magnifier glass
-    document.body.style.cursor = "auto";
   }
   function closeMagnifier() {
     const $currentSlide = $lightbox.find(
@@ -314,15 +311,24 @@ function handleMagnifyClick() {
 function closeLightbox() {
   const $lightboxWrapper = $(".lightbox-wrapper");
   const $lightboxImage = $lightbox.find(".lightbox-image");
+  const $currentSlide = $lightbox.find('.lightbox-slide[data-state="current"]');
+  const magnifierGlass = $currentSlide.find(".img-magnifier-glass")[0];
+
+  if (magnifierGlass) {
+    $currentSlide[0].removeChild(magnifierGlass);
+  }
+
   $lightboxWrapper.removeClass("open").fadeOut("fast", () => {
     $lightboxImage.attr("src", "");
     $lightboxImage.attr("srcset", "");
   });
+
   $lightbox.find(".lightbox-slide").off();
   $lightbox.find(".lightbox-close").off();
   $lightbox.find(".lightbox-arrow").off();
   $(document).off("keydown.lightbox");
 }
+
 function initSlides() {
   const transitionDuration = 400;
   let $currentSlide;
@@ -385,21 +391,33 @@ function initSlides() {
   };
 
   const showNextSlide = () => {
+    const $currentSlide = $lightbox.find(
+      '.lightbox-slide[data-state="current"]'
+    );
+    const magnifierGlass = $currentSlide.find(".img-magnifier-glass")[0];
+
+    if (magnifierGlass) {
+      $currentSlide[0].removeChild(magnifierGlass);
+    }
+
     transformSlide(prevSlideEl, "100%", 0);
     transformSlide(currentSlideEl, "-100%", 0);
     transformSlide(nextSlideEl, "0px", 1);
   };
 
   const showPrevSlide = () => {
+    const $currentSlide = $lightbox.find(
+      '.lightbox-slide[data-state="current"]'
+    );
+    const magnifierGlass = $currentSlide.find(".img-magnifier-glass")[0];
+
+    if (magnifierGlass) {
+      $currentSlide[0].removeChild(magnifierGlass);
+    }
+
     transformSlide(prevSlideEl, "0px", 1);
     transformSlide(currentSlideEl, "100%", 0);
     transformSlide(nextSlideEl, "-100%", 0);
-  };
-
-  const resetSlide = () => {
-    transformSlide(prevSlideEl, "-100%", 0);
-    transformSlide(currentSlideEl, "0px", 1);
-    transformSlide(nextSlideEl, "100%", 0);
   };
 
   const updateLightbox = (newSlide) => {
@@ -438,22 +456,6 @@ function initSlides() {
       currentIndex = index;
     }, transitionDuration);
   };
-
-  const handleMouseUpOrTouchEnd = (event) => {
-    const slideChangeThreshold = 150;
-
-    if (distance < -slideChangeThreshold) {
-      showNextSlide();
-      updateLightbox("next");
-    } else if (distance > slideChangeThreshold) {
-      showPrevSlide();
-      updateLightbox("prev");
-    } else {
-      resetSlide();
-      updateLightbox("current");
-    }
-  };
-
   addSlideEventListeners();
 }
 
