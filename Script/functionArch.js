@@ -21,8 +21,6 @@ const swipingThreshold = 5;
 let $lightbox;
 let images = [];
 let currentIndex = 0;
-let wasSwiping = false;
-let isMagnifierOpen = false;
 
 $(() => {
   initGallery();
@@ -136,7 +134,6 @@ function showInitialImage(index) {
 /**************************************
 Creazione Box con immagini aperte     * 
 ***************************************/
-
 function createLightbox() {
   const $lightboxWrapper = $('<div class="lightbox-wrapper">');
   $lightbox = $('<div class="lightbox">');
@@ -147,19 +144,8 @@ function createLightbox() {
   const $lightboxClose = $(
     '<button type="button" class="lightbox-close" aria-label="Close"></button>'
   );
-  const $magnifyButton = $(
-    '<button type="button" class="magnify-button">INGRANDISCI<i class="fa fa-search-plus"></i></button>'
-  );
-  $magnifyButton.on("click", (e) => {
-    handleMagnifyClick();
-  });
 
-  $lightboxHeader.append(
-    $lightboxNumbers,
-    $magnifyButton,
-    $lightboxTitle,
-    $lightboxClose
-  );
+  $lightboxHeader.append($lightboxNumbers, $lightboxTitle, $lightboxClose);
   $lightbox.append($lightboxHeader);
 
   const $slidesWrapper = $('<div class="lightbox-slides-wrapper"></div>');
@@ -205,130 +191,24 @@ function createLightbox() {
 
 function addLightboxEventListeners() {
   $lightbox.find(".lightbox-slide").on("click", (e) => {
-    if (e.currentTarget == e.target) closeLightbox();
-    closeMagnifier();
+    if (e.currentTarget == e.target && !wasSwiping) closeLightbox();
   });
   $lightbox.find(".lightbox-close").on("click", (e) => {
     closeLightbox();
   });
 }
-
-function handleMagnifyClick() {
-  const $currentSlide = $lightbox.find('.lightbox-slide[data-state="current"]');
-  const $currentImage = $currentSlide.find(".lightbox-image");
-
-  const img = $currentImage[0];
-  const zoom = 3;
-  let glass, w, h, bw;
-
-  if ($currentSlide.find(".img-magnifier-glass").length > 0) {
-    closeMagnifier();
-    return;
-  }
-
-  // Create magnifier glass
-  glass = document.createElement("DIV");
-  glass.setAttribute("class", "img-magnifier-glass");
-
-  // Insert magnifier glass
-  $currentSlide[0].insertBefore(glass, img);
-
-  // Set background properties for the magnifier glass
-  glass.style.backgroundImage = "url('" + img.src + "')";
-  glass.style.backgroundRepeat = "no-repeat";
-  glass.style.backgroundSize =
-    img.width * zoom + "px " + img.height * zoom + "px";
-  bw = 3;
-  w = glass.offsetWidth / 2;
-  h = glass.offsetHeight / 2;
-
-  // Execute a function when someone moves the magnifier glass over the image
-  glass.addEventListener("mousemove", moveMagnifier);
-  img.addEventListener("mousemove", moveMagnifier);
-
-  // Also for touch screens
-  glass.addEventListener("touchmove", moveMagnifier);
-  img.addEventListener("touchmove", moveMagnifier);
-
-  function moveMagnifier(e) {
-    var pos, x, y;
-    // Prevent any other actions that may occur when moving over the image
-    e.preventDefault();
-    // Get the cursor's x and y positions
-    pos = getCursorPos(e);
-    x = pos.x;
-    y = pos.y;
-    // Prevent the magnifier glass from being positioned outside the image
-    if (x > img.width - w / zoom) {
-      x = img.width - w / zoom;
-    }
-    if (x < w / zoom) {
-      x = w / zoom;
-    }
-    if (y > img.height - h / zoom) {
-      y = img.height - h / zoom;
-    }
-    if (y < h / zoom) {
-      y = h / zoom;
-    }
-    // Set the position of the magnifier glass relative to the image
-    glass.style.left = img.offsetLeft + x - w + "px";
-    glass.style.top = img.offsetTop + y - h + "px";
-    // Set the updated background size for the magnifier glass
-    glass.style.backgroundSize =
-      img.width * zoom + "px " + img.height * zoom + "px";
-    // Display what the magnifier glass "sees"
-    glass.style.backgroundPosition =
-      "-" + (x * zoom - w + bw) + "px -" + (y * zoom - h + bw) + "px";
-  }
-  function closeMagnifier() {
-    const $currentSlide = $lightbox.find(
-      '.lightbox-slide[data-state="current"]'
-    );
-    const magnifierGlass = $currentSlide.find(".img-magnifier-glass")[0];
-    if (magnifierGlass) {
-      $currentSlide[0].removeChild(magnifierGlass);
-    }
-  }
-
-  function getCursorPos(e) {
-    var a,
-      x = 0,
-      y = 0;
-    e = e || window.event;
-    // Get the x and y positions of the image
-    a = img.getBoundingClientRect();
-    // Calculate the cursor's x and y coordinates, relative to the image
-    x = e.pageX - a.left;
-    y = e.pageY - a.top;
-    // Consider any page scrolling
-    x = x - window.pageXOffset;
-    y = y - window.pageYOffset;
-    return { x: x, y: y };
-  }
-}
-
 function closeLightbox() {
   const $lightboxWrapper = $(".lightbox-wrapper");
   const $lightboxImage = $lightbox.find(".lightbox-image");
-  const $currentSlide = $lightbox.find('.lightbox-slide[data-state="current"]');
-  const magnifierGlass = $currentSlide.find(".img-magnifier-glass")[0];
-
-  if (magnifierGlass) {
-    $currentSlide[0].removeChild(magnifierGlass);
-  }
-
   $lightboxWrapper.removeClass("open").fadeOut("fast", () => {
     $lightboxImage.attr("src", "");
     $lightboxImage.attr("srcset", "");
   });
-
   $lightbox.find(".lightbox-slide").off();
   $lightbox.find(".lightbox-close").off();
   $lightbox.find(".lightbox-arrow").off();
   $(document).off("keydown.lightbox");
 }
-
 function initSlides() {
   const transitionDuration = 400;
   let $currentSlide;
@@ -391,30 +271,12 @@ function initSlides() {
   };
 
   const showNextSlide = () => {
-    const $currentSlide = $lightbox.find(
-      '.lightbox-slide[data-state="current"]'
-    );
-    const magnifierGlass = $currentSlide.find(".img-magnifier-glass")[0];
-
-    if (magnifierGlass) {
-      $currentSlide[0].removeChild(magnifierGlass);
-    }
-
     transformSlide(prevSlideEl, "100%", 0);
     transformSlide(currentSlideEl, "-100%", 0);
     transformSlide(nextSlideEl, "0px", 1);
   };
 
   const showPrevSlide = () => {
-    const $currentSlide = $lightbox.find(
-      '.lightbox-slide[data-state="current"]'
-    );
-    const magnifierGlass = $currentSlide.find(".img-magnifier-glass")[0];
-
-    if (magnifierGlass) {
-      $currentSlide[0].removeChild(magnifierGlass);
-    }
-
     transformSlide(prevSlideEl, "0px", 1);
     transformSlide(currentSlideEl, "100%", 0);
     transformSlide(nextSlideEl, "-100%", 0);
@@ -456,6 +318,7 @@ function initSlides() {
       currentIndex = index;
     }, transitionDuration);
   };
+
   addSlideEventListeners();
 }
 
