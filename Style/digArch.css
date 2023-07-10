@@ -274,6 +274,7 @@ section h1 {
   left: 0;
   right: 0;
   z-index: 9999;
+  overflow: hidden;
 }
 
 .lightbox {
@@ -281,6 +282,7 @@ section h1 {
   flex-direction: column;
   height: 100%;
   color: white;
+  overflow: hidden;
 }
 .lightbox .lightbox-header {
   flex-shrink: 0;
@@ -291,9 +293,11 @@ section h1 {
   padding: 1em;
   font-weight: 600;
   text-align: center;
+  overflow: hidden;
 }
 .lightbox .lightbox-header > * {
   opacity: 0.75;
+  overflow: hidden;
 }
 .lightbox .lightbox-close {
   position: relative;
@@ -305,6 +309,7 @@ section h1 {
   background: none;
   padding: 0;
   border: none;
+  overflow: hidden;
 }
 .lightbox .lightbox-close::before,
 .lightbox .lightbox-close::after {
@@ -313,15 +318,19 @@ section h1 {
   height: 4px;
   width: 80%;
   background-color: #fff;
+  overflow: hidden;
 }
 .lightbox .lightbox-close::before {
   transform: rotate(-45deg);
+  overflow: hidden;
 }
 .lightbox .lightbox-close::after {
   transform: rotate(45deg);
+  overflow: hidden;
 }
 .lightbox .lightbox-close:hover {
   opacity: 1;
+  overflow: hidden;
 }
 .lightbox .lightbox-slides-wrapper {
   flex-grow: 1;
@@ -341,7 +350,9 @@ section h1 {
   opacity: 0.75;
   cursor: pointer;
   filter: drop-shadow(0 0 7px #000);
+  overflow: hidden;
 }
+
 .lightbox .lightbox-arrow:hover {
   opacity: 1;
 }
@@ -364,25 +375,40 @@ section h1 {
   bottom: 0;
   left: 0;
   right: 0;
+  overflow: hidden;
 }
 .lightbox .lightbox-slide[data-state="prev"] {
   transform: translateX(-100%);
   opacity: 0;
+  overflow: hidden;
 }
 .lightbox .lightbox-slide[data-state="next"] {
   transform: translateX(100%);
   opacity: 0;
+  overflow: hidden;
 }
 .lightbox .lightbox-image {
   display: none;
   max-width: 100%;
   max-height: 100%;
+  cursor: pointer;
+  overflow: hidden;
 }
 .lightbox .spinner {
   display: none;
+  overflow: hidden;
+}
+.lightboxSub {
+  padding-top: 30px;
+  height: 5%;
+  background: linear-gradient(to bottom, rgb(32 32 37), rgb(46 46 53));
+  text-align: center;
+  font-size: 12px;
 }
 
-/* .img-magnifier-glass {
+/* Per la lente di ingrandimento
+
+.img-magnifier-glass {
   position: absolute;
   border: 1px solid #000;
   cursor: none;
@@ -424,6 +450,10 @@ section h1 {
 }
 
 .overlay-text {
+  line-height: 1.2;
+  padding: 2%;
+  font-family: "Arial", sans-serif;
+  background-color: #404040;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -431,10 +461,8 @@ section h1 {
   width: 80%;
   text-align: justify;
   transform: translate(-50%, -50%);
-  color: rgb(235, 229, 217);
-  font-size: 1rem;
-  text-align: left;
-  text-shadow: 0px 4px 4px #080808, 0 0 0 #000, 0px 4px 4px #000;
+  color: rgb(217 217 217);
+  font-size: 22px;
 }
 
 .beautiful-button {
@@ -442,43 +470,30 @@ section h1 {
   position: relative;
   display: inline-block;
   background: linear-gradient(to bottom, #4b4b58, #04000f);
-  /* Gradient background */
   color: white;
-  /* White text color */
   font-family: "Segoe UI", sans-serif;
-  /* Stylish and legible font */
   font-weight: bold;
   font-size: 18px;
-  /* Large font size */
   border: none;
-  /* No border */
   border-radius: 30px;
-  /* Rounded corners */
   padding: 14px 28px;
-  /* Large padding */
   cursor: pointer;
-  /* Cursor on hover */
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  /* Subtle shadow */
   animation: button-shimmer 2s infinite;
   transition: all 0.3s ease-in-out;
-  /* Smooth transition */
 }
 
-/* Hover animation */
 .beautiful-button:hover {
   background: linear-gradient(to bottom, #a27f13, #000000);
   animation: button-particles 1s ease-in-out infinite;
   transform: translateY(-2px);
 }
 
-/* Click animation */
 .beautiful-button:active {
   transform: scale(0.95);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Shimmer animation */
 @keyframes button-shimmer {
   0% {
     background-position: left top;
@@ -489,7 +504,6 @@ section h1 {
   }
 }
 
-/* Particle animation */
 @keyframes button-particles {
   0% {
     background-position: left top;
@@ -504,9 +518,11 @@ section h1 {
            Second              *
 *******************************/
 .second {
-  background-image: url(../images/imgBackgrounds/A-D.png);
-  background-attachment: fixed;
   height: 130vh;
+  background-image: url(../images/imgBackgrounds/A-D.png);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 /* Slider */
 #slider {
@@ -517,18 +533,11 @@ section h1 {
   margin-top: 13%;
   margin-left: 20%;
 }
-@keyframes load {
-  from {
-    left: -100%;
-  }
-  to {
-    left: 0;
-  }
-}
 .slides {
   width: 400%;
   height: 100%;
   position: relative;
+  overflow: hidden;
 }
 .slider {
   width: 25%;
@@ -536,6 +545,7 @@ section h1 {
   float: left;
   position: relative;
   z-index: 1;
+  overflow: hidden;
 }
 .slide img {
   width: 100%;
@@ -566,6 +576,7 @@ section h1 {
   overflow: hidden;
 }
 .content-txt {
+  padding: 1%;
   width: 30%;
   height: 100%;
   float: left;
@@ -577,6 +588,13 @@ section h1 {
     rgba(0, 0, 0, 0.926),
     rgba(0, 0, 0, 0.695)
   );
+  overflow: hidden;
+}
+.frt {
+  top: 50%;
+}
+.frt p {
+  margin-right: 4%;
 }
 .content-txt h2 {
   font-family: Arial;
@@ -587,6 +605,7 @@ section h1 {
   margin-left: 30px;
   padding-bottom: 10px;
   text-shadow: 0px 4px 4px #080808, 0 0 0 #000, 0px 4px 4px #000;
+  overflow: hidden;
 }
 .content-txt p {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -597,6 +616,7 @@ section h1 {
   color: var(--LightBeige);
   text-align: left;
   margin-left: 30px;
+  overflow: hidden;
 }
 .zero3 {
   font-size: 1rem;
@@ -604,6 +624,7 @@ section h1 {
   letter-spacing: 1px;
   padding: 1%;
   top: 25%;
+  overflow: hidden;
 }
 .monzuno {
   top: 80%;
@@ -622,7 +643,7 @@ section h1 {
 .buttons button:hover {
   background-color: #0000008a;
 }
-.lightbox-zoom {
+/* .lightbox-zoom {
   position: relative;
   width: 3rem;
   height: 3rem;
@@ -631,7 +652,7 @@ section h1 {
   margin-right: -8%;
   margin-left: -20%;
   cursor: pointer;
-}
+} */
 /*******************************
            Information         *
 ********************************/
@@ -688,10 +709,61 @@ section h1 {
 }
 
 @media (max-width: 811px) {
+  /*********************************************************************
+                                                    Blank Rassegna   *
+**********************************************************************/
+  section {
+    display: flex;
+    flex-direction: column;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    padding-top: 8%;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  }
+  /*******************************
+           Second              *
+*******************************/
+  /* Slider */
+  #slider {
+    width: 100%;
+    height: 100vh;
+    margin-top: 35%;
+    margin-left: 0;
+  }
+  .slider {
+    width: 70%;
+    overflow: hidden;
+  }
+  .image img {
+    width: 36%;
+    height: 40%;
+    overflow: hidden;
+  }
+  .content-txt {
+    width: 34%;
+    height: 50%;
+    top: 40%;
+  }
+  .frt {
+    top: 40%;
+  }
+  .zero3 {
+    top: 35%;
+    height: 100%;
+  }
+  .monzuno {
+    top: 40%;
+  }
+
+  /* ALTRO****************** */
   .menu ul {
     display: none;
   }
-  .dcontainer {
+  .dcontainer,
+  .second {
     background-attachment: scroll;
   }
   .front {
@@ -713,6 +785,9 @@ section h1 {
   .information p {
     font-size: 0.7rem;
   }
+  /****************************** 
+  Sidebar Menu                *
+*******************************/
   .sidebar,
   header input,
   label {
@@ -774,6 +849,7 @@ section h1 {
     color: var(--LightBeige);
     padding: 6px 12px;
     transition: all 0.5s;
+    z-index: 99;
   }
   label #cancel {
     z-index: 1111;

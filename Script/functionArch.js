@@ -139,14 +139,18 @@ function createLightbox() {
   const $lightboxWrapper = $('<div class="lightbox-wrapper">');
   $lightbox = $('<div class="lightbox">');
   const $lightboxHeader = $('<div class="lightbox-header">');
-  const $lightboxNumbers = $('<div class="lightbox-numbers"></div>');
   const $lightboxTitle = $('<div class="lightbox-title"></div>');
   const $lightboxClose = $(
     '<button type="button" class="lightbox-close" aria-label="Close"></button>'
   );
+  const $lightboxSub = $('<div class="lightboxSub"></div>');
 
-  $lightboxHeader.append($lightboxNumbers, $lightboxTitle, $lightboxClose);
+  $lightboxHeader.append($lightboxTitle, $lightboxClose);
   $lightbox.append($lightboxHeader);
+
+  $lightboxHeader.after($lightboxSub);
+
+  $lightboxSub.append("<p>Tocca l'immagine per vedere il contenuto</p>");
 
   const $slidesWrapper = $('<div class="lightbox-slides-wrapper"></div>');
   $lightbox.append($slidesWrapper);
