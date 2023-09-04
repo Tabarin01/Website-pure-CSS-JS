@@ -34,7 +34,7 @@ $(document).ready(function () {
   );
   $(".im3").css(
     "background-image",
-    "url(../images/imgSlides/Studio_di_piccoli_bimbi_1943_Colliva.JPG)"
+    "url(../images/imgSlides/Studio_di_piccoli_bimbi_1943_Colliva.jpg)"
   );
   $(".im4").css(
     "background-image",
