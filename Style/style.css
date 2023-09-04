@@ -24,7 +24,7 @@ body {
   color: var(--NotSoDark);
   width: 100%;
   min-height: 100vh;
-  background-image: url(../images/imgBackgrounds/NinoLeaQuadro.png);
+  background-image: url(../images/imgBackgrounds/NinoLeaQuadro.jpg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -182,7 +182,7 @@ label {
           Secondo Slide        *
 ********************************/
 .second {
-  background-image: url(../images/imgBackgrounds/BertocchiCollivaV2.png);
+  background-image: url(../images/imgBackgrounds/BertocchiCollivaV2.jpg);
   background-attachment: fixed;
   height: 1200px;
 }
@@ -731,18 +731,17 @@ Smartphone *
     background-attachment: scroll;
   }
   .container {
-    background-image: url("../images/imgBackgrounds/La_siepe_verdeLG.png");
+    background-image: url("../images/imgBackgrounds/La_siepe_verdeLG.jpg");
   }
   .second {
-    background-image: url("../images/imgBackgrounds/imgBG2.png");
+    background-image: url("../images/imgBackgrounds/imgBG2.jpg");
   }
   .third {
     background-image: linear-gradient(
-        to left,
-        rgba(0, 0, 0, 0.8),
-        rgba(0, 0, 0, 0)
-      ),
-      url("../images/imgBackgrounds/1bom1920.jpg");
+      to left,
+      rgba(0, 0, 0, 0.8),
+      rgba(0, 0, 0, 0)
+    );
   }
   /* ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''' */
   .front {

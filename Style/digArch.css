@@ -24,7 +24,7 @@ body {
   color: var(--color);
   width: 100%;
   min-height: 100vh;
-  background-image: url(../images/imgBackgrounds/A-D.png);
+  background-image: url(../images/imgBackgrounds/A-D.jpg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -519,7 +519,7 @@ section h1 {
 *******************************/
 .second {
   height: 130vh;
-  background-image: url(../images/imgBackgrounds/A-D.png);
+  background-image: url(../images/imgBackgrounds/_res_A-D.jpg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
