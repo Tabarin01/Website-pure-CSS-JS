@@ -406,7 +406,7 @@ section h1 {
   font-size: 12px;
 }
 
-/* Per la lente di ingrandimento
+/* Per la lente di ingrandimento */
 
 .img-magnifier-glass {
   position: absolute;
@@ -437,7 +437,7 @@ section h1 {
 
 .img-magnifier-container.active img {
   transform: scale(3);
-} */
+}
 
 .overlay {
   position: fixed;
