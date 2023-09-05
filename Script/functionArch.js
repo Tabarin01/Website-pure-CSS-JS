@@ -1,16 +1,16 @@
 /*********************************************************
                    Caricamento immagini                  * 
 **********************************************************/
-window.addEventListener("load", function () {
-  const container = document.querySelector(".dcontainer");
-  container.style.backgroundImage =
-    "linear-gradient(to right, rgb(0 0 0 / 80%), rgb(0 0 0 / 0%)), url('../images/imgBackgrounds/A-D.jpg')";
-});
-window.addEventListener("load", function () {
-  const container = document.querySelector(".second");
-  container.style.backgroundImage =
-    "linear-gradient(to right, rgb(0 0 0 / 80%), rgb(0 0 0 / 0%)), url('../images/imgBackgrounds/A-D.jpg')";
-});
+// window.addEventListener("load", function () {
+//   const container = document.querySelector(".dcontainer");
+//   container.style.backgroundImage =
+//     "linear-gradient(to right, rgb(0 0 0 / 80%), rgb(0 0 0 / 0%)), url('./images/imgBackgrounds/A-D.jpg')";
+// });
+// window.addEventListener("load", function () {
+//   const container = document.querySelector(".second");
+//   container.style.backgroundImage =
+//     "linear-gradient(to right, rgb(0 0 0 / 80%), rgb(0 0 0 / 0%)), url('./images/imgBackgrounds/A-D.jpg')";
+// });
 
 /*********************************************************
                    Creazione Galleria                    * 
@@ -21,117 +21,128 @@ const swipingThreshold = 5;
 let $lightbox;
 let images = [];
 let currentIndex = 0;
+try {
+  $(() => {
+    initGallery();
+    createLightbox();
+  });
 
-$(() => {
-  initGallery();
-  createLightbox();
-});
+  function initGallery() {
+    const $galleryItems = $(".gallery-item");
+    const $galleryThumbs = $galleryItems.find(".thumb");
 
-function initGallery() {
-  const $galleryItems = $(".gallery-item");
-  const $galleryThumbs = $galleryItems.find(".thumb");
+    const loadThumbnail = (target) => {
+      const src = target.dataset.src;
+      const srcset = target.dataset.srcset;
 
-  const loadThumbnail = (target) => {
-    const src = target.dataset.src;
-    const srcset = target.dataset.srcset;
+      const tempImage = new Image();
 
-    const tempImage = new Image();
-
-    if (isSrcsetSupported && srcset) {
-      tempImage.srcset = srcset;
-    } else if (src) {
-      tempImage.src = src;
-    }
-    tempImage.onload = function () {
-      if (tempImage.srcset) {
-        target.srcset = srcset;
+      if (isSrcsetSupported && srcset) {
+        tempImage.srcset = srcset;
       } else if (src) {
-        target.src = src;
+        tempImage.src = src;
       }
-
-      target.classList.remove("placeholder");
-    };
-  };
-
-  if ("IntersectionObserver" in window) {
-    const observerOptions = {
-      rootMargin: "200px 0px",
-    };
-
-    const handleIntersectionObserver = (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          loadThumbnail(entry.target);
-          intersectionObserver.unobserve(entry.target);
+      tempImage.onload = function () {
+        if (tempImage.srcset) {
+          target.srcset = srcset;
+        } else if (src) {
+          target.src = src;
         }
-      });
+
+        target.classList.remove("placeholder");
+      };
     };
 
-    const intersectionObserver = new IntersectionObserver(
-      handleIntersectionObserver,
-      observerOptions
-    );
+    if ("IntersectionObserver" in window) {
+      const observerOptions = {
+        rootMargin: "200px 0px",
+      };
 
-    $galleryThumbs.each((i, el) => intersectionObserver.observe(el));
-  } else {
-    $galleryThumbs.each((i, el) => loadThumbnail(el));
+      const handleIntersectionObserver = (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            loadThumbnail(entry.target);
+            intersectionObserver.unobserve(entry.target);
+          }
+        });
+      };
+
+      const intersectionObserver = new IntersectionObserver(
+        handleIntersectionObserver,
+        observerOptions
+      );
+
+      $galleryThumbs.each((i, el) => intersectionObserver.observe(el));
+    } else {
+      $galleryThumbs.each((i, el) => loadThumbnail(el));
+    }
+
+    $galleryItems.on("click", (e) => {
+      const $currentTarget = $(e.currentTarget);
+
+      const $currentGallery = $currentTarget.closest(".gallery");
+      const itemIndex = $currentTarget.index();
+
+      openLightbox($currentGallery, itemIndex);
+      initSlides();
+      addLightboxEventListeners();
+    });
   }
-
-  $galleryItems.on("click", (e) => {
-    const $currentTarget = $(e.currentTarget);
-
-    const $currentGallery = $currentTarget.closest(".gallery");
-    const itemIndex = $currentTarget.index();
-
-    openLightbox($currentGallery, itemIndex);
-    initSlides();
-    addLightboxEventListeners();
-  });
+} catch {
+  console.error("Errore nella creazione della galleria");
 }
 
-function openLightbox($currentGallery, targetIndex) {
-  $lightbox.addClass("open");
-  $lightbox.parent(".lightbox-wrapper").fadeIn("fast");
+try {
+  function openLightbox($currentGallery, targetIndex) {
+    $lightbox.addClass("open");
+    $lightbox.parent(".lightbox-wrapper").fadeIn("fast");
 
-  images = [];
-  $currentGallery.find(".gallery-item").each((i, element) => {
-    const $currentImageEl = $(element).find("img");
+    images = [];
+    $currentGallery.find(".gallery-item").each((i, element) => {
+      const $currentImageEl = $(element).find("img");
 
-    const currentItem = {
-      src: $currentImageEl.data("image") || $currentImageEl.data("src"),
-      srcFallback: $currentImageEl.data("image-fallback"),
-      srcset: $currentImageEl.data("image-srcset"),
-      title: $currentImageEl.data("title"),
-      text: $currentImageEl.data("text"),
-    };
+      const currentItem = {
+        src: $currentImageEl.data("image") || $currentImageEl.data("src"),
+        srcFallback: $currentImageEl.data("image-fallback"),
+        srcset: $currentImageEl.data("image-srcset"),
+        title: $currentImageEl.data("title"),
+        text: $currentImageEl.data("text"),
+      };
 
-    images.push(currentItem);
-  });
+      images.push(currentItem);
+    });
 
-  currentIndex = targetIndex;
-  showInitialImage(targetIndex);
-  updateLightboxHeader(targetIndex);
+    currentIndex = targetIndex;
+    showInitialImage(targetIndex);
+    updateLightboxHeader(targetIndex);
+  }
+} catch {
+  console.error("Errore nell'openLightbox");
 }
+try {
+  function showInitialImage(index) {
+    const $prevSlide = $lightbox.find('.lightbox-slide[data-state="prev"]');
+    const $currentSlide = $lightbox.find(
+      '.lightbox-slide[data-state="current"]'
+    );
+    const $nextSlide = $lightbox.find('.lightbox-slide[data-state="next"]');
+    const $currentImage = $currentSlide.find(".lightbox-image");
+    const $spinner = $currentSlide.find(".spinner");
 
-function showInitialImage(index) {
-  const $prevSlide = $lightbox.find('.lightbox-slide[data-state="prev"]');
-  const $currentSlide = $lightbox.find('.lightbox-slide[data-state="current"]');
-  const $nextSlide = $lightbox.find('.lightbox-slide[data-state="next"]');
-  const $currentImage = $currentSlide.find(".lightbox-image");
-  const $spinner = $currentSlide.find(".spinner");
+    loadImage($currentSlide, index);
 
-  loadImage($currentSlide, index);
+    $currentImage.hide();
+    $spinner.show();
 
-  $currentImage.hide();
-  $spinner.show();
-
-  $currentImage.on("load.currentImage", (e) => {
-    loadImage($prevSlide, index - 1);
-    loadImage($nextSlide, index + 1);
-    $currentImage.off("load.currentImage");
-  });
+    $currentImage.on("load.currentImage", (e) => {
+      loadImage($prevSlide, index - 1);
+      loadImage($nextSlide, index + 1);
+      $currentImage.off("load.currentImage");
+    });
+  }
+} catch {
+  console.error("Errore nell'anteprima");
 }
-
 /**************************************
 Creazione Box con immagini aperte     * 
 ***************************************/
